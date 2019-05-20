@@ -1,4 +1,4 @@
-During my first week of work at Macy's Tech, I felt lost with all the new acronyms and jargon. So I built this JavaFX tool that uses JDBC to connect to a MySQL database which contains the acronyms and information about them. This tool helps me and other new hires comprehend the acronyms and jargon quickly and easily.  
+During my first week of work at Macy's Tech, I felt lost with all the new acronyms and jargon, so I built this JavaFX tool that uses JDBC to connect to a MySQL database which contains the acronyms and information about them. This tool helps me and other new hires comprehend the acronyms and jargon quickly and easily.  
 
 This tool is an excellent display my skills with Java, SQL, JavaFX, JDBC, and MySQL database technology, and it will help other new hires better adjust to their new workplace.
 
