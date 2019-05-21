@@ -94,7 +94,7 @@ public class MacysAcroDict extends Application {
         // TextField for acronym input
         TextField acronymInput = new TextField();
         acronymInput.setFont(textFieldFont);
-        acronymInput.setPromptText("Enter acronym...");
+        acronymInput.setPromptText("Enter term...");
 
         // Font for TextAreas
         Font textAreaFont = new Font(16);
