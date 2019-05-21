@@ -1,8 +1,11 @@
 package main.java;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.FileReader;
+import java.io.File;
+import java.io.FileWriter;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -12,7 +15,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.scene.Scene;
@@ -33,7 +35,7 @@ import java.util.Optional;
  * application
  *
  * @author Akshay Sathiya
- * @version 05-20-2019
+ * @version 05-21-2019
  */
 public class MacysAcroDict extends Application {
 
@@ -57,9 +59,9 @@ public class MacysAcroDict extends Application {
         stage.setTitle("Macy's Acronym Dictionary (MAD) - Akshay Sathiya");
         stage.setScene(setScene());
         stage.setMinWidth(425);
-        stage.setMinHeight(422);
+        stage.setMinHeight(454);
         stage.setMaxWidth(425);
-        stage.setMaxHeight(422);
+        stage.setMaxHeight(454);
         stage.show();
 
         // link the Java code and the MySQL database
@@ -132,7 +134,7 @@ public class MacysAcroDict extends Application {
 
             // if an empty string or null is provided, alert user and stop
             if (acronym == null || acronym.equals("")) {
-                outputHeader.setText("Please enter a valid acronym");
+                outputHeader.setText("Please enter a valid term");
                 return;
             }
 
@@ -144,7 +146,7 @@ public class MacysAcroDict extends Application {
                     + "WHERE acronym = " + "\"" + acronym + "\";");
                 if (rs.next()) {
                     // alert user that the data already exists in the database
-                    outputHeader.setText("Acronym already in database, see data"
+                    outputHeader.setText("Term already in database, see data"
                         + " below");
 
                     // fetch the acronym data from the database
@@ -191,7 +193,7 @@ public class MacysAcroDict extends Application {
 
             // if an empty string or null is provided, alert user and stop
             if (acronym == null || acronym.equals("")) {
-                outputHeader.setText("Please enter a valid acronym");
+                outputHeader.setText("Please enter a valid term");
                 return;
             }
 
@@ -250,13 +252,13 @@ public class MacysAcroDict extends Application {
 
             // if an empty string or null is provided, alert user and stop
             if (acronym == null || acronym.equals("")) {
-                outputHeader.setText("Please enter a valid acronym");
+                outputHeader.setText("Please enter a valid term");
                 return;
             }
 
             // prevent removal of the default MAD acronym
             if (acronym.equalsIgnoreCase("MAD")) {
-                outputHeader.setText("Cannot remove the default MAD acronym");
+                outputHeader.setText("Cannot remove the default MAD term");
                 return;
             }
 
@@ -267,9 +269,10 @@ public class MacysAcroDict extends Application {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM acro_table "
                     + "WHERE acronym = " + "\"" + acronym + "\";");
                 if (!rs.next()) {
-                    /* alert the user that no such acronym exists, and invite
-                    them to add it into the database */
-                    (new AddPopUp(acronym)).display();
+                    // alert the user that no such acronym exists
+                    outputHeader.setText("That term does not exist in "
+                        + "the database");
+                    return;
                 } else {
                     /* display the remove pop-up */
                     (new RemovePopUp(acronym, rs.getString("stands_for"),
@@ -299,13 +302,13 @@ public class MacysAcroDict extends Application {
 
             // if an empty string or null is provided, alert user and stop
             if (acronym == null || acronym.equals("")) {
-                outputHeader.setText("Please enter a valid acronym");
+                outputHeader.setText("Please enter a valid term");
                 return;
             }
 
             // prevent editing of the default MAD acronym
             if (acronym.equalsIgnoreCase("MAD")) {
-                outputHeader.setText("Cannot edit the default MAD acronym "
+                outputHeader.setText("Cannot edit the default MAD term "
                     + "data");
                 return;
             }
@@ -357,7 +360,7 @@ public class MacysAcroDict extends Application {
             Optional<String> result = authReset.showAndWait();
             if (!result.isPresent()
                 || !result.get().equalsIgnoreCase("macystech")) {
-                outputHeader.setText("Database has not been reset, "
+                outputHeader.setText("Database not reset, "
                     + "authentication failed");
                 return;
             }
@@ -386,7 +389,7 @@ public class MacysAcroDict extends Application {
             displayOutput.setText("");
 
             // alert the user that the database has been reset
-            outputHeader.setText("Database has been reset, add new acronyms "
+            outputHeader.setText("Database has been reset, add new terms "
                 + "below");
         });
 
@@ -440,6 +443,50 @@ public class MacysAcroDict extends Application {
             displayOutput.positionCaret(0);
         });
 
+        // the download data button, allows the user to obtain all data in DB
+        Button download = new Button();
+        download.setText("Download All MAD Data");
+        download.setFont(buttonFont);
+        download.setOnAction(event -> {
+            // clear fields
+            acronymInput.setText("");
+            displayOutput.setText("");
+
+            try {
+                /* obtain all the database data  */
+                Statement stmt = conMySQL.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM acro_table;");
+
+                // create a new file and write to it
+                File downloadData = new File(System.getProperty("user.home")
+                    + "/Desktop", "mad_data.txt");
+                BufferedWriter out = new BufferedWriter(
+                    new FileWriter(downloadData));
+                out.write("Macy's Acronym Database (MAD) - Akshay Sathiya\n");
+                out.append("                   ALL DATA\n");
+                out.append("==============================================\n"
+                    + "\n");
+                while (rs.next()) {
+                    // write the data for each term to the file
+                    out.append("TERM : " + rs.getString("acronym") + "\n");
+                    out.append("STANDS FOR : " + rs.getString("stands_for")
+                        + "\n");
+                    out.append("SHORT DEFINITION : " + rs.getString("short_def")
+                        + "\n\n");
+                }
+                stmt.close();
+                out.close();
+            } catch (SQLException e) {
+                Logger.getLogger(MacysAcroDict.class.getName()).log(
+                    Level.SEVERE, null, e);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // restore default output header text
+            outputHeader.setText("All MAD data downloaded as a flat file");
+        });
+
         // HBox for other operations
         HBox extra = new HBox();
         extra.getChildren().addAll(remove, edit, reset);
@@ -451,7 +498,7 @@ public class MacysAcroDict extends Application {
         // VBox for entire layout, contains Text, TextArea, and HBox
         VBox fullLayout = new VBox();
         fullLayout.getChildren().addAll(outputHeader, displayOutput, inputArea,
-            extra, extra2);
+            extra, extra2, download);
 
         // Set the scene
         return new Scene(fullLayout);

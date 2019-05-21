@@ -18,6 +18,12 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The remove pop-up class.
+ *
+ * @author Akshay Sathiya
+ * @version 05-21-2019
+ */
 public class RemovePopUp {
 
     // connection to MySQL database

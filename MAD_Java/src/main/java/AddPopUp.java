@@ -18,6 +18,12 @@ import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The add pop-up class.
+ *
+ * @author Akshay Sathiya
+ * @version 05-21-2019
+ */
 public class AddPopUp {
 
     // connection to MySQL database
