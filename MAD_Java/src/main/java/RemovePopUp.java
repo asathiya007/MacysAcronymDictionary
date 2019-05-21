@@ -85,7 +85,7 @@ public class RemovePopUp {
             try {
                 // remove the data from the database using a PreparedStatement
                 PreparedStatement prepStmt = conMySQL.prepareStatement("DELETE "
-                    + "FROM acro_table WHERE acronym = '" + acronym + "';");
+                    + "FROM acro_table WHERE acronym = \"" + acronym + "\";");
                 prepStmt.execute();
                 prepStmt.close();
             } catch (SQLException e) {

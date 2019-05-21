@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24782c1d-d0ca-45ff-ac96-6120d1ebc9b4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/EditPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EditPopUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MacysAcroDict.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MacysAcroDict.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RemovePopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RemovePopUp.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/MacysAcroDict.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="379" column="11" selection-start-line="379" selection-start-column="11" selection-end-line="379" selection-end-column="11" />
+            <state relative-caret-position="346">
+              <caret line="432" column="5" lean-forward="true" selection-start-line="432" selection-start-column="5" selection-end-line="432" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -32,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/EditPopUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="125" column="21" lean-forward="true" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+            <state relative-caret-position="247">
+              <caret line="144" column="31" lean-forward="true" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,11 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/RemovePopUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="39" column="8" lean-forward="true" selection-end-line="150" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-4241">
+              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -56,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/AddPopUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
+            <state relative-caret-position="2904">
               <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -83,8 +82,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Start.java" />
         <option value="$PROJECT_DIR$/src/main/java/ScriptRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/AddPopUp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/RemovePopUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/EditPopUp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/RemovePopUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/MacysAcroDict.java" />
       </list>
     </option>
@@ -203,7 +202,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32959184" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32959184" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -233,7 +232,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AddPopUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
+        <state relative-caret-position="2904">
           <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -243,18 +242,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/RemovePopUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="39" column="8" lean-forward="true" selection-end-line="150" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-4241">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/EditPopUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="125" column="21" lean-forward="true" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+        <state relative-caret-position="247">
+          <caret line="144" column="31" lean-forward="true" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -263,8 +259,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MacysAcroDict.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="379" column="11" selection-start-line="379" selection-start-column="11" selection-end-line="379" selection-end-column="11" />
+        <state relative-caret-position="346">
+          <caret line="432" column="5" lean-forward="true" selection-start-line="432" selection-start-column="5" selection-end-line="432" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

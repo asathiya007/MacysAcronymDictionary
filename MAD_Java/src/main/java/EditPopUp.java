@@ -81,10 +81,10 @@ public class EditPopUp {
             try {
                 // remove the data from the database using a PreparedStatement
                 PreparedStatement prepStmt = conMySQL.prepareStatement("UPDATE "
-                    + "acro_table SET acronym = '" + acronymText.getText()
-                    + "', stands_for = '" + standsForText.getText()
-                    + "', short_def = '" + shortDescText.getText() + "' "
-                    + "WHERE acronym = '" + acronym + "';");
+                    + "acro_table SET acronym = \"" + acronymText.getText()
+                    + "\", stands_for = '" + standsForText.getText()
+                    + "\", short_def = \"" + shortDescText.getText() + "\" "
+                    + "WHERE acronym = \"" + acronym + "\";");
                 prepStmt.execute();
                 prepStmt.close();
             } catch (SQLException e) {

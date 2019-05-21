@@ -122,7 +122,7 @@ public class MacysAcroDict extends Application {
                 so, display it */
                 Statement stmt = conMySQL.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM acro_table "
-                    + "WHERE acronym = " + "'" + acronym + "';");
+                    + "WHERE acronym = " + "\"" + acronym + "\";");
                 if (rs.next()) {
                     // alert user that the data already exists in the database
                     outputHeader.setText("Acronym already in database, see data"
@@ -180,8 +180,8 @@ public class MacysAcroDict extends Application {
                 result in a ResultSet. */
                 Statement stmt = conMySQL.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM "
-                    + "acro_table WHERE acronym = " + "'" + acronym
-                    + "';");
+                    + "acro_table WHERE acronym = " + "\"" + acronym
+                    + "\";");
 
                 /* if the ResultSet is not empty, then show the acronym data,
                 else add the new acronym */
@@ -244,7 +244,7 @@ public class MacysAcroDict extends Application {
                 not, prompt them to add it, otherwise remove it */
                 Statement stmt = conMySQL.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM acro_table "
-                    + "WHERE acronym = " + "'" + acronym + "';");
+                    + "WHERE acronym = " + "\"" + acronym + "\";");
                 if (!rs.next()) {
                     /* alert the user that no such acronym exists, and invite
                     them to add it into the database */
@@ -293,7 +293,7 @@ public class MacysAcroDict extends Application {
                 not, prompt them to add it, otherwise edit it */
                 Statement stmt = conMySQL.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM acro_table "
-                    + "WHERE acronym = " + "'" + acronym + "';");
+                    + "WHERE acronym = " + "\"" + acronym + "\";");
                 if (!rs.next()) {
                     /* alert the user that no such acronym exists, and invite
                     them to add it into the database */
@@ -379,13 +379,49 @@ public class MacysAcroDict extends Application {
             outputHeader.setText(startPrompt);
         });
 
+        // about button, displays information about the MAD application
+        Button about = new Button();
+        about.setText("About MAD and Akshay Sathiya");
+        about.setOnAction(event -> {
+            outputHeader.setText("About MAD and Akshay Sathiya");
+            displayOutput.setText("Hey! I am Akshay Sathiya, the developer of "
+                + "the Macy's Acronym Dictionary (MAD) application!\n\n");
+            displayOutput.appendText("During my first week of work at Macy's "
+                + "Tech, I felt lost with all the new acronyms and jargon, so I"
+                + " built this JavaFX tool that uses JDBC to connect to a MySQL"
+                + " database which contains the acronyms and information about "
+                + "them. This tool helps me and other new hires comprehend the "
+                + "acronyms and jargon quickly and easily.\n"
+                + "\n"
+                + "This tool is an excellent display of my skills with Java, "
+                + "SQL, JavaFX, JDBC, and MySQL database technology, and it "
+                + "will help other new hires better adjust to their new "
+                + "workplace.\n"
+                + "\n"
+                + "In this application, I directly ran a SQL script (.sql file)"
+                + " from my Java code by using a Java file (.java file) called "
+                + "ScriptRunner.java and its dependencies. The code in that "
+                + "Java file and its dependencies belongs to a GitHub user by "
+                + "the screen name of BenoitDuffez. The associated code for "
+                + "integrating ScriptRunner.java with my own Java code also "
+                + "belongs to BenoitDuffez. The ScriptRunner.java file, its "
+                + "dependencies, and the integration code can be found on one "
+                + "of BenoitDuffez's GitHub repositories. Here is the link: "
+                + "https://github.com/BenoitDuffez/ScriptRunner. I have used "
+                + "the assets from this repository responsibly, rightfully, "
+                + "and fairly in the development of my project.\n\n");
+            displayOutput.appendText("Thank you for using my application, I "
+                + "hope you enjoy!");
+            displayOutput.positionCaret(0);
+        });
+
         // HBox for other operations
         HBox extra = new HBox();
         extra.getChildren().addAll(remove, edit, reset);
 
         // HBox for more operations
         HBox extra2 = new HBox();
-        extra2.getChildren().addAll(clear);
+        extra2.getChildren().addAll(clear, about);
 
         // VBox for entire layout, contains Text, TextArea, and HBox
         VBox fullLayout = new VBox();
