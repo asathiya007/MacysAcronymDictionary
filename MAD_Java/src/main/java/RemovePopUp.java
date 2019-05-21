@@ -51,7 +51,7 @@ public class RemovePopUp {
         // create the new stage, with constraints
         Stage popUp = new Stage();
         popUp.initModality(Modality.APPLICATION_MODAL);
-        popUp.setTitle("MAD - Remove Acronym");
+        popUp.setTitle("MAD - Remove Term");
         popUp.setMinWidth(390);
         popUp.setMinHeight(245);
         popUp.setMaxWidth(390);
@@ -80,7 +80,7 @@ public class RemovePopUp {
 
         // Button to remove acronym
         Button removeAcronym = new Button();
-        removeAcronym.setText("Remove Acronym");
+        removeAcronym.setText("Remove Term");
         removeAcronym.setOnAction(event -> {
             try {
                 // remove the data from the database using a PreparedStatement

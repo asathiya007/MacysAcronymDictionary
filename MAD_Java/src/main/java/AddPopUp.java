@@ -45,7 +45,7 @@ public class AddPopUp {
         // create the new stage, with constraints
         Stage popUp = new Stage();
         popUp.initModality(Modality.APPLICATION_MODAL);
-        popUp.setTitle("MAD - Add New Acronym");
+        popUp.setTitle("MAD - Add New Term");
         popUp.setMinWidth(390);
         popUp.setMinHeight(245);
         popUp.setMaxWidth(390);
@@ -53,12 +53,12 @@ public class AddPopUp {
 
         // Text to alert the user that the acronym is not in the database
         Text alertUser = new Text();
-        alertUser.setText("That acronym is not in our database. "
+        alertUser.setText("That term is not in the database. "
             + "Add it, or exit this pop-up");
 
         // TextField for acronym input
         TextField acronymInput = new TextField();
-        acronymInput.setPromptText("Enter acronym...");
+        acronymInput.setText(acronym);
 
         // TextField for acronym stands-for
         TextField standsFor = new TextField();
@@ -71,7 +71,7 @@ public class AddPopUp {
 
         // Button to add acronym
         Button addAcronym = new Button();
-        addAcronym.setText("Add New Acronym");
+        addAcronym.setText("Add New Term");
         addAcronym.setOnAction(event -> {
             // fetch the input
             String acroStandsFor = standsFor.getText();

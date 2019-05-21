@@ -51,7 +51,7 @@ public class EditPopUp {
         // create the new stage, with constraints
         Stage popUp = new Stage();
         popUp.initModality(Modality.APPLICATION_MODAL);
-        popUp.setTitle("MAD - Edit Acronym Data");
+        popUp.setTitle("MAD - Edit Term Data");
         popUp.setMinWidth(390);
         popUp.setMinHeight(245);
         popUp.setMaxWidth(390);
@@ -59,7 +59,7 @@ public class EditPopUp {
 
         // Text to alert the user that the acronym is not in the database
         Text alertUser = new Text();
-        alertUser.setText("Edit the acronym data below, or exit this pop-up");
+        alertUser.setText("Edit the term data below, or exit this pop-up");
 
         // Text to display acronym
         TextField acronymText = new TextField();
@@ -76,7 +76,7 @@ public class EditPopUp {
 
         // Button to edit acronym data
         Button editAcronym = new Button();
-        editAcronym.setText("Edit Acronym Data");
+        editAcronym.setText("Edit Term Data");
         editAcronym.setOnAction(event -> {
             try {
                 // remove the data from the database using a PreparedStatement
