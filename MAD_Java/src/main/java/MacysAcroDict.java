@@ -12,7 +12,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 import javafx.scene.Scene;
 
 import java.sql.Connection;
@@ -54,10 +56,10 @@ public class MacysAcroDict extends Application {
         // Set and show the stage, with size constraints
         stage.setTitle("Macy's Acronym Dictionary (MAD) - Akshay Sathiya");
         stage.setScene(setScene());
-        stage.setMinWidth(390);
-        stage.setMinHeight(272);
-        stage.setMaxWidth(390);
-        stage.setMaxHeight(272);
+        stage.setMinWidth(478);
+        stage.setMinHeight(422);
+        stage.setMaxWidth(478);
+        stage.setMaxHeight(422);
         stage.show();
 
         // link the Java code and the MySQL database
@@ -86,22 +88,39 @@ public class MacysAcroDict extends Application {
      * Sets the scene of the JavaFX application, and programs the UI components
      */
     private Scene setScene() {
+        // Font for TextFields
+        Font textFieldFont = new Font(16);
+
         // TextField for acronym input
         TextField acronymInput = new TextField();
+        acronymInput.setFont(textFieldFont);
         acronymInput.setPromptText("Enter acronym...");
 
-        // TextArea to display output, read-only, wrap text, max width-390
+        // Font for TextAreas
+        Font textAreaFont = new Font(16);
+
+        // TextArea to display output, read-only, wrap text, with constraints
         TextArea displayOutput = new TextArea();
+        displayOutput.setFont(textAreaFont);
         displayOutput.setEditable(false);
         displayOutput.setWrapText(true);
-        displayOutput.setMaxWidth(390);
+        displayOutput.setMaxWidth(478);
+        displayOutput.setMinHeight(280);
+
+        // Font for output header
+        Font outputHeaderFont = new Font(20);
 
         // Text for header of output display area
         Text outputHeader = new Text();
         outputHeader.setText(startPrompt);
+        outputHeader.setFont(outputHeaderFont);
+
+        // Font for Buttons
+        Font buttonFont = new Font(16);
 
         // Button to add a new acronym to the database
         Button add = new Button();
+        add.setFont(buttonFont);
         add.setText("Add Acronym");
         add.setOnAction(event -> {
             // fetch the input and clear the input field
@@ -160,6 +179,7 @@ public class MacysAcroDict extends Application {
 
         // Button to search for an acronym in the database
         Button search = new Button();
+        search.setFont(buttonFont);
         search.setText("Search Acronym");
         search.setOnAction(event -> {
             // fetch the input and clear the input field
@@ -218,6 +238,7 @@ public class MacysAcroDict extends Application {
 
         // Button to remove an acronym from the database
         Button remove = new Button();
+        remove.setFont(buttonFont);
         remove.setText("Remove Acronym");
         remove.setOnAction(event -> {
             // fetch the input and clear the input field
@@ -266,7 +287,8 @@ public class MacysAcroDict extends Application {
 
         // Button to edit an acronym's data in the database
         Button edit = new Button();
-        edit.setText("Edit Acronym");
+        edit.setFont(buttonFont);
+        edit.setText("Edit Acronym Data");
         edit.setOnAction(event -> {
             // fetch the input and clear the input field
             String acronym = acronymInput.getText();
@@ -328,7 +350,8 @@ public class MacysAcroDict extends Application {
         runs initialization.sql SQL script
          */
         Button reset = new Button();
-        reset.setText("Reset Database");
+        reset.setFont(buttonFont);
+        reset.setText("  Reset Database  ");
         reset.setOnAction(event -> {
             // check for authentication first, stop if authentication failed
             Optional<String> result = authReset.showAndWait();
@@ -369,7 +392,8 @@ public class MacysAcroDict extends Application {
 
         // clear button, clears the main screen
         Button clear = new Button();
-        clear.setText("Clear Screen");
+        clear.setFont(buttonFont);
+        clear.setText("     Clear Screen     ");
         clear.setOnAction(event -> {
             // clear the input field and the display window
             acronymInput.setText("");
@@ -381,7 +405,8 @@ public class MacysAcroDict extends Application {
 
         // about button, displays information about the MAD application
         Button about = new Button();
-        about.setText("About MAD and Akshay Sathiya");
+        about.setFont(buttonFont);
+        about.setText("      About MAD and Akshay Sathiya      ");
         about.setOnAction(event -> {
             outputHeader.setText("About MAD and Akshay Sathiya");
             displayOutput.setText("Hey! I am Akshay Sathiya, the developer of "

@@ -51,7 +51,7 @@ public class EditPopUp {
         // create the new stage, with constraints
         Stage popUp = new Stage();
         popUp.initModality(Modality.APPLICATION_MODAL);
-        popUp.setTitle("MAD - Remove Acronym");
+        popUp.setTitle("MAD - Edit Acronym Data");
         popUp.setMinWidth(390);
         popUp.setMinHeight(245);
         popUp.setMaxWidth(390);
