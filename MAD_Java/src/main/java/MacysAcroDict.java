@@ -56,9 +56,9 @@ public class MacysAcroDict extends Application {
         // Set and show the stage, with size constraints
         stage.setTitle("Macy's Acronym Dictionary (MAD) - Akshay Sathiya");
         stage.setScene(setScene());
-        stage.setMinWidth(478);
+        stage.setMinWidth(425);
         stage.setMinHeight(422);
-        stage.setMaxWidth(478);
+        stage.setMaxWidth(425);
         stage.setMaxHeight(422);
         stage.show();
 
@@ -104,7 +104,7 @@ public class MacysAcroDict extends Application {
         displayOutput.setFont(textAreaFont);
         displayOutput.setEditable(false);
         displayOutput.setWrapText(true);
-        displayOutput.setMaxWidth(478);
+        displayOutput.setMaxWidth(425);
         displayOutput.setMinHeight(280);
 
         // Font for output header
@@ -121,7 +121,7 @@ public class MacysAcroDict extends Application {
         // Button to add a new acronym to the database
         Button add = new Button();
         add.setFont(buttonFont);
-        add.setText("Add Acronym");
+        add.setText("Add Term ");
         add.setOnAction(event -> {
             // fetch the input and clear the input field
             String acronym = acronymInput.getText();
@@ -153,7 +153,7 @@ public class MacysAcroDict extends Application {
                     String acronymShortDef = rs.getString("short_def");
 
                     // print the data to the Text Area
-                    displayOutput.appendText("ACRONYM : " + acronymName
+                    displayOutput.appendText("TERM : " + acronymName
                         + "\n\n");
                     displayOutput.appendText("STANDS FOR : " + acronymStandsFor
                         + "\n\n");
@@ -180,7 +180,7 @@ public class MacysAcroDict extends Application {
         // Button to search for an acronym in the database
         Button search = new Button();
         search.setFont(buttonFont);
-        search.setText("Search Acronym");
+        search.setText("Search Term");
         search.setOnAction(event -> {
             // fetch the input and clear the input field
             String acronym = acronymInput.getText();
@@ -239,7 +239,7 @@ public class MacysAcroDict extends Application {
         // Button to remove an acronym from the database
         Button remove = new Button();
         remove.setFont(buttonFont);
-        remove.setText("Remove Acronym");
+        remove.setText("Remove Term");
         remove.setOnAction(event -> {
             // fetch the input and clear the input field
             String acronym = acronymInput.getText();
@@ -288,7 +288,7 @@ public class MacysAcroDict extends Application {
         // Button to edit an acronym's data in the database
         Button edit = new Button();
         edit.setFont(buttonFont);
-        edit.setText("Edit Acronym Data");
+        edit.setText("Edit Term Data");
         edit.setOnAction(event -> {
             // fetch the input and clear the input field
             String acronym = acronymInput.getText();
@@ -351,7 +351,7 @@ public class MacysAcroDict extends Application {
          */
         Button reset = new Button();
         reset.setFont(buttonFont);
-        reset.setText("  Reset Database  ");
+        reset.setText("  Reset Database   ");
         reset.setOnAction(event -> {
             // check for authentication first, stop if authentication failed
             Optional<String> result = authReset.showAndWait();
@@ -406,7 +406,7 @@ public class MacysAcroDict extends Application {
         // about button, displays information about the MAD application
         Button about = new Button();
         about.setFont(buttonFont);
-        about.setText("      About MAD and Akshay Sathiya      ");
+        about.setText("About MAD and Akshay Sathiya");
         about.setOnAction(event -> {
             outputHeader.setText("About MAD and Akshay Sathiya");
             displayOutput.setText("Hey! I am Akshay Sathiya, the developer of "
