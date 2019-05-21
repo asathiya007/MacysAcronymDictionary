@@ -358,7 +358,7 @@ public class MacysAcroDict extends Application {
                 e.printStackTrace();
             }
 
-            // clear all input fields
+            // clear fields
             acronymInput.setText("");
             displayOutput.setText("");
 
@@ -367,14 +367,30 @@ public class MacysAcroDict extends Application {
                 + "below");
         });
 
+        // clear button, clears the main screen
+        Button clear = new Button();
+        clear.setText("Clear Screen");
+        clear.setOnAction(event -> {
+            // clear the input field and the display window
+            acronymInput.setText("");
+            displayOutput.setText("");
+
+            // restore default output header text
+            outputHeader.setText(startPrompt);
+        });
+
         // HBox for other operations
         HBox extra = new HBox();
         extra.getChildren().addAll(remove, edit, reset);
 
+        // HBox for more operations
+        HBox extra2 = new HBox();
+        extra2.getChildren().addAll(clear);
+
         // VBox for entire layout, contains Text, TextArea, and HBox
         VBox fullLayout = new VBox();
         fullLayout.getChildren().addAll(outputHeader, displayOutput, inputArea,
-            extra);
+            extra, extra2);
 
         // Set the scene
         return new Scene(fullLayout);
