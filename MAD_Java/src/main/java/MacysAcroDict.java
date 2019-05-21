@@ -39,7 +39,7 @@ public class MacysAcroDict extends Application {
 
     // connection to MySQL database
     private Connection conMySQL;
-    private String startPrompt = "Explore Macy's acronyms below";
+    private String startPrompt = "Explore Macy's acronyms and jargon below";
 
     /**
      * The main method of the MAD application, launches the JavaFX program
