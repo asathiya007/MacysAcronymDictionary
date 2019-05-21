@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Optional;
@@ -142,6 +143,7 @@ public class MacysAcroDict extends Application {
                     displayOutput.positionCaret(0);
                     return;
                 }
+                stmt.close();
             } catch (SQLException e) {
                 Logger.getLogger(MacysAcroDict.class.getName()).log(
                     Level.SEVERE, null, e);
@@ -202,11 +204,59 @@ public class MacysAcroDict extends Application {
                     them to add it into the database */
                     (new AddPopUp(acronym)).display();
                 }
+                stmt.close();
             } catch (SQLException e) {
                 Logger.getLogger(MacysAcroDict.class.getName()).log(
                     Level.SEVERE, null, e);
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+
+            // reset the output header text
+            outputHeader.setText(startPrompt);
+        });
+
+        // Button to remove an acronym from the database
+        Button remove = new Button();
+        remove.setText("Remove Acronym");
+        remove.setOnAction(event -> {
+            // fetch the input and clear the input field
+            String acronym = acronymInput.getText();
+            acronymInput.setText("");
+
+            // clear the text area output field
+            displayOutput.setText("");
+
+            // if an empty string or null is provided, alert user and stop
+            if (acronym == null || acronym.equals("")) {
+                outputHeader.setText("Please enter a valid acronym");
+                return;
+            }
+
+            if (acronym.equalsIgnoreCase("MAD")) {
+                outputHeader.setText("Cannot remove the default MAD acronym");
+                return;
+            }
+
+            try {
+                /* check to see if the database already contains the data, if
+                not, prompt them to add it, otherwise remove it */
+                Statement stmt = conMySQL.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM acro_table "
+                    + "WHERE acronym = " + "'" + acronym + "';");
+                if (!rs.next()) {
+                    /* alert the user that no such acronym exists, and invite
+                    them to add it into the database */
+                    (new AddPopUp(acronym)).display();
+                } else {
+                    /* display the remove pop-up */
+                    (new RemovePopUp(acronym, rs.getString("stands_for"),
+                        rs.getString("short_def"))).display();
+                }
+                stmt.close();
+            } catch (SQLException e) {
+                Logger.getLogger(MacysAcroDict.class.getName()).log(
+                    Level.SEVERE, null, e);
             }
 
             // reset the output header text
@@ -269,7 +319,7 @@ public class MacysAcroDict extends Application {
 
         // HBox for other operations
         HBox extra = new HBox();
-        extra.getChildren().addAll(reset);
+        extra.getChildren().addAll(remove, reset);
 
         // VBox for entire layout, contains Text, TextArea, and HBox
         VBox fullLayout = new VBox();

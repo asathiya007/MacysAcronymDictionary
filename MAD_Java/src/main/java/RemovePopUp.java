@@ -1,38 +1,44 @@
 package main.java;
 
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.Scene;
-import javafx.scene.text.Text;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AddPopUp {
+public class RemovePopUp {
 
     // connection to MySQL database
     private Connection conMySQL;
-    // acronym String
+    // acronym information
     private String acronym;
+    private String standsFor;
+    private String shortDesc;
 
     /**
-     * Constructor for the AddPopUp class.
+     * Constructor for the RemovePopUp class.
      *
-     * @param acronym the acronym to be added.
+     * @param acronym the acronym that will be removed.
+     * @param standsFor the acronym's stands-for.
+     * @param shortDesc the acronym's short description.
      */
-    public AddPopUp(String acronym) {
-        // accept the acronym
+    public RemovePopUp(String acronym, String standsFor, String shortDesc) {
+        // accept acronym info
         this.acronym = acronym;
+        this.standsFor = standsFor;
+        this.shortDesc = shortDesc;
 
         // link the Java code to the MySQL database
         link();
@@ -45,7 +51,7 @@ public class AddPopUp {
         // create the new stage, with constraints
         Stage popUp = new Stage();
         popUp.initModality(Modality.APPLICATION_MODAL);
-        popUp.setTitle("MAD - Add New Acronym");
+        popUp.setTitle("MAD - Remove Acronym");
         popUp.setMinWidth(390);
         popUp.setMinHeight(245);
         popUp.setMaxWidth(390);
@@ -53,44 +59,33 @@ public class AddPopUp {
 
         // Text to alert the user that the acronym is not in the database
         Text alertUser = new Text();
-        alertUser.setText("That acronym is not in our database. "
-            + "Add it, or exit this pop-up");
+        alertUser.setText("Confirm the removal of this data, or exit this "
+            + "pop-up");
 
-        // TextField for acronym input
-        TextField acronymInput = new TextField();
-        acronymInput.setPromptText("Enter acronym...");
+        // Text to display acronym, make uneditable
+        TextField acronymText = new TextField();
+        acronymText.setText(acronym);
+        acronymText.setEditable(false);
 
-        // TextField for acronym stands-for
-        TextField standsFor = new TextField();
-        standsFor.setPromptText("Stands for...");
+        // Text for acronym stands-for, make uneditable
+        TextField standsForText = new TextField();
+        standsForText.setText(standsFor);
+        standsForText.setEditable(false);
 
-        // TextArea for short description, wrap text
-        TextArea shortDesc = new TextArea();
-        shortDesc.setWrapText(true);
-        shortDesc.setPromptText("Short description about the acronym...");
+        // TextArea for short description, wrap text, make uneditable
+        TextArea shortDescText = new TextArea();
+        shortDescText.setWrapText(true);
+        shortDescText.setText(shortDesc);
+        shortDescText.setEditable(false);
 
-        // Button to add acronym
-        Button addAcronym = new Button();
-        addAcronym.setText("Add New Acronym");
-        addAcronym.setOnAction(event -> {
-            // fetch the input
-            String acroStandsFor = standsFor.getText();
-            String acroShortDesc = shortDesc.getText();
-
-            // if an empty string or null is provided, alert the user
-            if (acroStandsFor == null || acroStandsFor.equals("")
-                || acroShortDesc == null || acroShortDesc.equals("")) {
-                alertUser.setText("Please provide complete input");
-                return;
-            }
-
+        // Button to remove acronym
+        Button removeAcronym = new Button();
+        removeAcronym.setText("Remove Acronym");
+        removeAcronym.setOnAction(event -> {
             try {
-                // add the data to the database using a PreparedStatement
-                PreparedStatement prepStmt = conMySQL.prepareStatement("INSERT "
-                    + "INTO acro_table VALUES (?, ?, ?);");
-                prepStmt.setString(1, acronym);
-                prepStmt.setString(2, acroStandsFor);
-                prepStmt.setString(3, acroShortDesc);
+                // remove the data from the database using a PreparedStatement
+                PreparedStatement prepStmt = conMySQL.prepareStatement("DELETE "
+                    + "FROM acro_table WHERE acronym = '" + acronym + "';");
                 prepStmt.execute();
                 prepStmt.close();
             } catch (SQLException e) {
@@ -100,9 +95,10 @@ public class AddPopUp {
                 e.printStackTrace();
             }
 
-            // clear the input fields and close the pop-up window
-            standsFor.setText("");
-            shortDesc.setText("");
+            // clear the fields and close the pop-up window
+            acronymText.setText("");
+            standsForText.setText("");
+            shortDescText.setText("");
             popUp.close();
         });
 
@@ -116,12 +112,12 @@ public class AddPopUp {
 
         // HBox for horizontal layout
         HBox horzLayout = new HBox();
-        horzLayout.getChildren().addAll(addAcronym, exit);
+        horzLayout.getChildren().addAll(removeAcronym, exit);
 
         // VBox for vertical layout
         VBox vertLayout = new VBox();
-        vertLayout.getChildren().addAll(alertUser, acronymInput, standsFor,
-            shortDesc, horzLayout);
+        vertLayout.getChildren().addAll(alertUser, acronymText, standsForText,
+            shortDescText, horzLayout);
 
         // Set the scene
         Scene scene = new Scene(vertLayout);
@@ -130,6 +126,7 @@ public class AddPopUp {
         popUp.setScene(scene);
         popUp.show();
     }
+
 
     /**
      * Loads the JDBC driver and creates the connection between the MySQL
