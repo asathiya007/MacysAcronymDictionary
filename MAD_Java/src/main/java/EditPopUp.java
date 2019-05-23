@@ -88,7 +88,7 @@ public class EditPopUp {
                 // remove the data from the database using a PreparedStatement
                 PreparedStatement prepStmt = conMySQL.prepareStatement("UPDATE "
                     + "acro_table SET acronym = \"" + acronymText.getText()
-                    + "\", stands_for = '" + standsForText.getText()
+                    + "\", stands_for = \"" + standsForText.getText()
                     + "\", short_def = \"" + shortDescText.getText() + "\" "
                     + "WHERE acronym = \"" + acronym + "\";");
                 prepStmt.execute();
