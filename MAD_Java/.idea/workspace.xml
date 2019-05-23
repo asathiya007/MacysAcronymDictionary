@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24782c1d-d0ca-45ff-ac96-6120d1ebc9b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AddPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AddPopUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EditPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EditPopUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MacysAcroDict.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MacysAcroDict.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RemovePopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RemovePopUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/java/AddPopUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/java/AddPopUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/java/EditPopUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/java/EditPopUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/java/MacysAcroDict.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/java/MacysAcroDict.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/java/RemovePopUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/java/RemovePopUp.class" afterDir="false" />
-    </list>
+    <list default="true" id="24782c1d-d0ca-45ff-ac96-6120d1ebc9b4" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/MacysAcroDict.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="270" column="33" lean-forward="true" selection-start-line="270" selection-start-column="33" selection-end-line="270" selection-end-column="33" />
+            <state relative-caret-position="16533">
+              <caret line="503" column="37" lean-forward="true" selection-start-line="503" selection-start-column="37" selection-end-line="503" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -236,8 +226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MacysAcroDict.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="270" column="33" lean-forward="true" selection-start-line="270" selection-start-column="33" selection-end-line="270" selection-end-column="33" />
+        <state relative-caret-position="16533">
+          <caret line="503" column="37" lean-forward="true" selection-start-line="503" selection-start-column="37" selection-end-line="503" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

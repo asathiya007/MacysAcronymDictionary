@@ -214,7 +214,7 @@ public class MacysAcroDict extends Application {
                     String acronymShortDef = rs.getString("short_def");
 
                     // print the data to the Text Area
-                    displayOutput.appendText("ACRONYM : " + acronymName
+                    displayOutput.appendText("TERM : " + acronymName
                         + "\n\n");
                     displayOutput.appendText("STANDS FOR : " + acronymStandsFor
                         + "\n\n");
